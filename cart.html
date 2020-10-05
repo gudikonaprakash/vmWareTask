@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <style>
+    body {
+  background-color: rgb(252, 251, 248);
+}
+* {
+  box-sizing: border-box;
+}
+li {
+  list-style-type: none;
+}
+h3 {
+  margin: 0px;
+}
+img {
+  width: 150px;
+  height: 150px;
+  background: lightgray;
+  position: relative;
+  right: 8%;
+}
+.hrLine {
+  height: 3px;
+  border-width: 0;
+  color: gray;
+  background-color: gray;
+  display: block;
+}
+.col-container {
+  display: flex;
+  width: 100%;
+}
+.col {
+  flex: 1;
+}
+h2 {
+  background-color: green;
+  border-radius: 5px;
+  color: #fff;
+  padding: 5px;
+  width: 300px;
+}
+h1,
+h2 {
+  margin: 0px;
+}
+/* horizontal col code ends*/
+.column1 {
+  float: left;
+  width: 60%;
+  padding: 10px;
+  height: auto;
+}
+.column2 {
+  float: left;
+  width: 40%;
+  padding: 10px;
+  height: auto;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.card {
+  width: 30%;
+  text-align: center;
+  border: 2px solid gray;
+  padding-top: 2%;
+  float: left;
+  margin: 1%;
+}
+/* price list items*/
+.offer {
+  float: left;
+  background-color: green;
+  color: white;
+  padding: 2px;
+}
+.pricelist {
+  height: 70px;
+  background: lightgray;
+}
+.iteam {
+  display: block;
+  float: left;
+  padding: 2%;
+}
+.strike {
+  color: red;
+  text-decoration: line-through;
+  float: left;
+  padding-left: 2%;
+}
+
+.price {
+  color: #000;
+  font-size: 18px;
+}
+.princeOriginal {
+  font-weight: 700;
+  float: left;
+  padding-left: 4%;
+}
+.add-to-cart {
+  color: blue;
+  border: 2px solid blue;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-right: 4px;
+  float: right;
+  padding: 2px;
+}
+/*price table1*/
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+}
+input {
+  width: 40px;
+  border-radius: 3px;
+  height: 25px;
+}
+.sumValue {
+  border: 2px solid gray;
+  border-radius: 3px;
+}
+.delete-item {
+  margin: 0 5%;
+}
+.plus-item {
+  margin: 0 20% 0 0;
+}
+.bottom {
+  padding: 0 2%;
+}
+.bottom > span {
+  float: right;
+}
+
+.otherTotal {
+  height: 40px;
+  background-color: lightgray;
+  padding: 2%;
+}
+.otherTotal > span {
+  float: right;
+}
+#clear-cart {
+  width: 100%;
+}
+/* media queries*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 481px) {
+  .plus-item {
+    margin: 0 10% 0 0;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  .col-container {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  h2 {
+    width: 100%;
+  }
+  .column1,
+  .column2 {
+    width: 100%;
+  }
+  .offer {
+    display: none;
+  }
+  .card {
+    width: 100%;
+  }
+  ul,
+  li {
+    margin: 0px;
+    padding: 0px;
+  }
+  img {
+    background: none;
+  }
+
+  .delete-item {
+    margin: 0 3%;
+  }
+  .princeOriginal {
+    padding-left: 10%;
+  }
+  .plus-item {
+    margin: 0 10% 0 0;
+  }
+}
+
+@media only screen and (min-width: 569px) {
+  .plus-item {
+    margin: 0 10% 0 0;
+  }
+}
+
+@media only screen and (min-width: 763px) {
+  .plus-item {
+    margin: 0 15% 0 0;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .plus-item {
+    margin: 0 13% 0 0;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+}
+</style>
+  </head>
+  <body>
+    <hr class="hrLine" />
+    <div class="col-container">
+      <div class="col">
+        <h1>All Items</h1>
+      </div>
+
+      <div class="col">
+        <h2>Item <span id="count-cart">X</span> is added to cart</h2>
+      </div>
+    </div>
+
+    <hr class="hrLine" />
+    <!-- hr line ends *********************************-->
+
+    <div class="row">
+      <div class="column1">
+        <ul>
+          <li>
+            <div class="card">
+              <span class="offer">offer</span>
+              <img
+                src="https://www.ivyboarding.com/w3template/w3images/1010.png"
+                alt="coffee"
+              />
+              <div class="pricelist">
+                <p>
+                  <span class="iteam" >Iteam</span><br/>
+                </p>
+                <p>
+                  <span class="strike">
+                    <span class="price">$500</span>
+                  </span>
+                  <span class="price princeOriginal">$180.00</span>
+                  <a
+                    class="add-to-cart"
+                    href="#"
+                    data-name="Iteam1"
+                    data-price="180"
+                    >Add to Cart
+                  </a>
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card">
+              <span class="offer">offer</span>
+              <img
+                src="https://www.ivyboarding.com/w3template/w3images/1010.png"
+                alt="coffee"
+              />
+              <div class="pricelist">
+                <p>
+                  <span class="iteam" >Iteam</span><br/>
+                </p>
+                <p>
+                  <span class="strike">
+                    <span class="price">$500</span>
+                  </span>
+                  <span class="price princeOriginal">$212.50</span>
+                  <a
+                    class="add-to-cart"
+                    href="#"
+                    data-name="Iteam2"
+                    data-price="212.5">
+                    Add to Cart
+                  </a>
+              </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card">
+              <span class="offer">offer</span>
+              <img
+                src="https://www.ivyboarding.com/w3template/w3images/1010.png"
+                alt="coffee"
+              />
+              <div class="pricelist">
+                <p>
+                  <span class="iteam" >Iteam</span><br/>
+                </p>
+                <p>
+                  <span class="strike">
+                    <span class="price">$500</span>
+                  </span>
+                  <span class="price princeOriginal">$304</span>
+                  <a
+                  class="add-to-cart"
+                  href="#"
+                  data-name="Iteam3"
+                  data-price="304">
+                  Add to Cart
+                </a>
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="card">
+              <span class="offer">offer</span>
+              <img
+                src="https://www.ivyboarding.com/w3template/w3images/1010.png"
+                alt="coffee"
+              />
+              <div class="pricelist">
+                <p>
+                  <span class="iteam" >Iteam</span><br/>
+                </p>
+                    <p>
+                       <span class="strike">
+                          <span class="price">$500</span>
+                        </span>
+                        <span class="price princeOriginal">$142</span>
+                        <a
+                          class="add-to-cart"
+                          href="#"
+                          data-name="Iteam4"
+                          data-price="142">
+                          Add to Cart
+                        </a>
+                    </p>
+              </div>
+              </div>
+              </li>
+            </ul>
+      </div>
+      <div class="column2" >
+        <hr class="hrLine" />
+        <div class="row">
+          <div class="column" >
+            <h3>Iteams</h3>
+          </div>
+          <div class="column" >
+            <h3>Qty</h3>
+          </div>
+          <div class="column" >
+           <h3>Price</h3>
+          </div>
+        </div>
+        <hr class="hrLine" />
+        <div class="totalCol">
+          <ul id="show-cart">
+            <li>???????</li>
+          </ul>
+          <hr class="hrLine" />
+          <div class="sumValue">
+            <h4 class="bottom">Total</h4>
+            <div class="bottom">Items<span id="total-cart"></span></div>
+            <div class="bottom">Discount<span id="type-Discount"></span></div>
+          <div class="bottom">Type Discount<span id="total-Discount"></span></div>
+          <div class="otherTotal">Other Total<span id="other-Total"></span></div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <button id="clear-cart">Clear Cart</button>
+
+    <script src="js/shoppingCart.js"></script>
+
+    <script>
+      $(".add-to-cart").click(function (event) {
+        event.preventDefault();
+        var name = $(this).attr("data-name");
+        var price = Number($(this).attr("data-price"));
+
+        shoppingCart.addItemToCart(name, price, 1);
+        displayCart();
+      });
+
+      $("#clear-cart").click(function (event) {
+        shoppingCart.clearCart();
+        displayCart();
+      });
+
+      function displayCart() {
+        var cartArray = shoppingCart.listCart();
+        console.log(cartArray);
+        var output = "";
+
+        for (var i in cartArray) {
+          output +=
+            "<li>" +
+              
+            cartArray[i].name +
+            " <button class='delete-item' data-name='" +
+            cartArray[i].name +
+            "'>X</button>" +
+            " <button class='subtract-item' data-name='" +
+            cartArray[i].name +
+            "'>-</button>" +
+            " <input class='item-count' type='number' data-name='" +
+            cartArray[i].name +
+            "' value='" +
+            cartArray[i].count +
+            "' >" +
+            " <button class='plus-item' data-name='" +
+            cartArray[i].name +
+            "'>+</button>" +  " $ " +
+            cartArray[i].total +            
+            "</li>";
+        }
+
+        $("#show-cart").html(output);
+        $("#count-cart").html(shoppingCart.countCart());
+        $("#total-cart").html(shoppingCart.totalCart());
+        $("#type-Discount").html(shoppingCart.typeDiscount());
+        $("#total-Discount").html(shoppingCart.totalDiscount());
+        $("#other-Total").html(shoppingCart.totalCart());
+      }
+
+      $("#show-cart").on("click", ".delete-item", function (event) {
+        var name = $(this).attr("data-name");
+        shoppingCart.removeItemFromCartAll(name);
+        displayCart();
+      });
+
+      $("#show-cart").on("click", ".subtract-item", function (event) {
+        var name = $(this).attr("data-name");
+        shoppingCart.removeItemFromCart(name);
+        displayCart();
+      });
+
+      $("#show-cart").on("click", ".plus-item", function (event) {
+        var name = $(this).attr("data-name");
+        shoppingCart.addItemToCart(name, 0, 1);
+        displayCart();
+      });
+
+      $("#show-cart").on("change", ".item-count", function (event) {
+        var name = $(this).attr("data-name");
+        var count = Number($(this).val());
+        shoppingCart.setCountForItem(name, count);
+        displayCart();
+      });
+
+      displayCart();
+    </script>
+    <!--script for the calculation part -->
+    <script>
+    var shoppingCart = (function () {
+  var cart = [];
+  function Item(name, price, count) {
+    this.name = name;
+    this.price = price;
+    this.count = count;
+  }
+  function saveCart() {
+    localStorage.setItem("shoppingCart", JSON.stringify(cart));
+  }
+  function loadCart() {
+    cart = JSON.parse(localStorage.getItem("shoppingCart"));
+    if (cart === null) {
+      cart = [];
+    }
+  }
+  loadCart();
+  var obj = {};
+  obj.addItemToCart = function (name, price, count) {
+    for (var i in cart) {
+      if (cart[i].name === name) {
+        cart[i].count += count;
+        saveCart();
+        return;
+      }
+    }
+    console.log("addItemToCart:", name, price, count);
+
+    var item = new Item(name, price, count);
+    cart.push(item);
+    saveCart();
+  };
+  obj.setCountForItem = function (name, count) {
+    for (var i in cart) {
+      if (cart[i].name === name) {
+        cart[i].count = count;
+        break;
+      }
+    }
+    saveCart();
+  };
+
+  obj.removeItemFromCart = function (name) {
+    for (var i in cart) {
+      if (cart[i].name === name) {
+        cart[i].count--;
+        if (cart[i].count === 0) {
+          cart.splice(i, 1);
+        }
+        break;
+      }
+    }
+    saveCart();
+  };
+
+  obj.removeItemFromCartAll = function (name) {
+    for (var i in cart) {
+      if (cart[i].name === name) {
+        cart.splice(i, 1);
+        break;
+      }
+    }
+    saveCart();
+  };
+
+  obj.clearCart = function () {
+    cart = [];
+    saveCart();
+  };
+
+  obj.countCart = function () {
+    var totalCount = 0;
+    for (var i in cart) {
+      totalCount += cart[i].count;
+    }
+    return totalCount;
+  };
+
+  obj.totalCart = function () {
+    var totalCost = 0;
+    for (var i in cart) {
+      totalCost += cart[i].price * cart[i].count;
+    }
+    return totalCost.toFixed(2);
+  };
+
+  obj.totalDiscount = function () {
+    var totalDiscount = 0;
+    for (var i in cart) {
+      totalDiscount = 0;
+    }
+    return totalDiscount.toFixed(2);
+  };
+
+  obj.typeDiscount = function () {
+    var typeDiscount = 0;
+    for (var i in cart) {
+      typeDiscount = 0;
+    }
+    return typeDiscount.toFixed(2);
+  };
+
+  obj.otherTotal = function () {
+    var totalCost = 0;
+    for (var i in cart) {
+      totalCost += cart[i].price + cart[i].price;
+    }
+    return totalCost;
+  };
+
+  obj.listCart = function () {
+    var cartCopy = [];
+    console.log("Listing cart");
+    console.log(cart);
+    for (var i in cart) {
+      console.log(i);
+      var item = cart[i];
+      var itemCopy = {};
+      for (var p in item) {
+        itemCopy[p] = item[p];
+      }
+      itemCopy.total = (item.price * item.count).toFixed(2);
+      cartCopy.push(itemCopy);
+    }
+    return cartCopy;
+  };
+  return obj;
+})();
+
+    </script>
+  </body>
+</html>
